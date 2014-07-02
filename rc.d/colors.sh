@@ -19,7 +19,9 @@ fi
 
 # enable --color switch for grep commands
 for cmd in grep fgrep egrep; do
-  alias $cmd="$cmd --color=auto"
+  if echo hi |$cmd -q --color=auto hi &> /dev/null; then
+    alias $cmd="$cmd --color=auto"
+  fi
 done
 
 # enable --color switch for ls command, if supported
