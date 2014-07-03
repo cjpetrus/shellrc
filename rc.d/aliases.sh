@@ -23,3 +23,6 @@ fi
 
 # alias for using rsync with sudo and ssh
 alias rrsync='rsync --rsync-path sudo\ rsync -avze ssh'
+
+# sum (e.g. echo 1 2 3 |sum)
+alias sum="xargs | tr ' ' '+' | bc"
