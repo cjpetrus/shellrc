@@ -7,3 +7,8 @@ highlight() { e="$1"; shift; grep --color=always -Eih "$e|$" "$@"; }
 
 # grep process table
 psgrep() { psc |grep -v grep |grep -i --color=auto "$@"; }
+
+# killall alternative
+pspid() { ps xao pid,args |grep -v grep |grep -i "$@" |cut -d' ' -f1; }
+pskill() { kill $(pspid $@); }
+pskill9() { kill -9 $(pspid $@); }
