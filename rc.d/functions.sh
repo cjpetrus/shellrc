@@ -9,6 +9,6 @@ highlight() { e="$1"; shift; grep --color=always -Eih "$e|$" "$@"; }
 psgrep() { psc |grep -v grep |grep -i --color=auto "$@"; }
 
 # killall alternative
-pspid() { ps xao pid,args |grep -v grep |grep -i "$@" |cut -d' ' -f1; }
+pspid() { ps xao pid,args |grep -v grep |grep -i "$@" |awk '{print $1}'; }
 pskill() { kill $(pspid $@); }
 pskill9() { kill -9 $(pspid $@); }
