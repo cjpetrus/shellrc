@@ -1,3 +1,6 @@
+# trick to make aliases available when using sudo
+alias sudo='sudo '
+
 # common ls aliases
 alias ll='ls -hal'
 alias la='ls -A'
