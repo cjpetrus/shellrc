@@ -4,6 +4,10 @@ autoload -Uz compinit && compinit -i
 # use parameter expansion, command substitution and arithmetic expansion
 setopt prompt_subst
 
+# do not print an error when using '*'. '~' and '=' without anything to complete
+# e.g. sudo ls /etc/sudoers.d/*
+setopt nonomatch
+
 # use a menu for auto-completion
 zstyle ':completion:*:*:*:*:*' menu select
 
