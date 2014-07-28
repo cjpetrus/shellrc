@@ -29,3 +29,19 @@ alias rrsync='rsync --rsync-path sudo\ rsync -rvze ssh'
 
 # sum (e.g. echo 1 2 3 |sum)
 alias sum="xargs | tr ' ' '+' | bc"
+
+# alias ag to ack/grep if ag is not available
+if ! which ag &> /dev/null; then
+  # Use ack if available
+  if which ack &> /dev/null; then
+    alias ag='ack'
+
+  # Debian/Ubuntu executeable name is ack-grep
+  elif which ack-grep &> /dev/null; then
+    alias ag='ack-grep'
+
+  # Fallback to grep -R
+  else
+    ag() { grep -R $1 *; }
+  fi
+fi
