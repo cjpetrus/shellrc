@@ -10,5 +10,20 @@ psgrep() { psc |grep -v grep |grep -i --color=auto "$@"; }
 
 # killall alternative
 pspid() { ps xao pid,args |grep -v grep |grep -i "$@" |awk '{print $1}'; }
-pskill() { kill $(pspid $@); }
-pskill9() { kill -9 $(pspid $@); }
+
+pskill() {
+  # Check whether a signal was given
+  if [[ "$1" =~ '^-[[:alnum:]]+' ]]; then
+    SIGNAL=$1
+    shift
+  else
+    SIGNAL="-TERM"
+  fi
+
+  PIDS=$(pspid $@)
+  if [ -n "$PIDS" ]; then
+    kill $SIGNAL $PIDS
+  else
+    echo "No processes matching '$@' found" 1>&2
+  fi
+}
