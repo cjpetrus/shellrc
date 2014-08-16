@@ -45,6 +45,3 @@ if ! which ag &> /dev/null; then
     ag() { grep -R $1 *; }
   fi
 fi
-
-# go fmt all go files recursively
-alias gofmtall='find -name \*.go -exec go fmt {} \;'
