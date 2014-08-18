@@ -21,7 +21,7 @@ alias hd='od -Ax -tx1z -v'
 if [[ "$(uname)" == "Darwin" ]]; then
   alias psc='ps xao pid,user,args'
 elif [[ "$(uname)" == "Linux" ]]; then
-  alias psc='ps xawfeo pid,user,cgroup,args'
+  alias psc='ps xawfo pid,user,args'
 fi
 
 # alias for using rsync with sudo and ssh
