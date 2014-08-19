@@ -45,3 +45,8 @@ if ! which ag &> /dev/null; then
     ag() { grep -R $1 *; }
   fi
 fi
+
+# syntax highlight
+if which pygmentize &> /dev/null; then
+  alias hcat='pygmentize -g -O style=trac -f terminal256'
+fi
