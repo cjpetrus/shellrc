@@ -8,9 +8,9 @@ highlight() { e="$1"; shift; grep --color=always -Eih "$e|$" "$@"; }
 # grep process table
 psgrep() { psc |grep -v grep |grep -i --color=auto "$@"; }
 
-# killall alternative
 pspid() { ps xao pid,args |grep -v grep |grep -i "$@" |awk '{print $1}'; }
 
+# killall alternative
 pskill() {
   # Check whether a signal was given
   if [[ "$1" =~ '^-[[:alnum:]]+' ]]; then
@@ -22,7 +22,7 @@ pskill() {
 
   PIDS=$(pspid $@)
   if [ -n "$PIDS" ]; then
-    kill $SIGNAL $PIDS
+    echo $PIDS |xargs kill $SIGNAL
   else
     echo "No processes matching '$@' found" 1>&2
   fi
