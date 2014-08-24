@@ -1,9 +1,6 @@
 case ${TERM} in
   xterm*|rxvt*|Eterm|aterm|kterm|gnome*|interix|screen*)
     if [ -n "$ZSH_VERSION" ]; then
-      # There's no HOSTNAME variable on zsh
-      HOSTNAME=$(hostname)
-
       function precmd() {
         echo -ne "\033]0;$(hostname) | $(basename $PWD)\007"
       }
