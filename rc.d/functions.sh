@@ -58,3 +58,9 @@ gittree() {
     echo
   done
 }
+
+# Serve current directory with Python's simple HTTP server
+serve() {
+  local port=${1:-8000}
+  python -m SimpleHTTPServer ${port}
+}
