@@ -3,7 +3,7 @@ case ${TERM} in
     # If current terminal is an ssh session, prepend hostname to prompt
     remote_host() {
       if [ -n "$SSH_CONNECTION" ]; then
-        echo "$(hostname) | "
+        echo "$(hostname):"
       fi
     }
 
