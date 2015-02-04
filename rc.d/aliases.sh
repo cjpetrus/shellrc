@@ -50,3 +50,10 @@ fi
 if which pygmentize &> /dev/null; then
   alias hcat='pygmentize -g -O style=trac -f terminal256'
 fi
+
+# alias more/less to use most if available
+if which most &> /dev/null; then
+  alias more=most
+  alias less=most
+  export PAGER="most -s" # Squeeze multiple newlines into one
+fi
