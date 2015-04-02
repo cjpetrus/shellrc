@@ -40,9 +40,9 @@ if ! which ag &> /dev/null; then
   elif which ack-grep &> /dev/null; then
     alias ag='ack-grep'
 
-  # Fallback to grep -R
+  # Fallback to grep -Ri
   else
-    ag() { grep -R $1 *; }
+    ag() { grep -Ri $1 *; }
   fi
 fi
 
