@@ -46,14 +46,14 @@ if ! which ag &> /dev/null; then
   fi
 fi
 
-# syntax highlight
-if which pygmentize &> /dev/null; then
-  alias hcat='pygmentize -g -O style=trac -f terminal256'
+# use vimpager as pager if available
+if which vimpager &> /dev/null; then
+  export PAGER="vimpager"
+  alias more=$PAGER
+  alias less=$PAGER
 fi
 
-# alias more/less to use most if available
-if which most &> /dev/null; then
-  alias more=most
-  alias less=most
-  export PAGER="most -s" # Squeeze multiple newlines into one
+# use vimcat instead of pygmetize as hcat alias
+if which vimcat &> /dev/null; then
+  alias hcat=vimcat
 fi
