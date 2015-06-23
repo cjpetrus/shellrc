@@ -19,9 +19,9 @@ alias hd='od -Ax -tx1z -v'
 
 # alias for nice ps output (macos/linux versions)
 if [[ "$(uname)" == "Darwin" ]]; then
-  alias psc='ps xao pid,user,args'
+  alias psc='ps xao pid,state,user,args'
 elif [[ "$(uname)" == "Linux" ]]; then
-  alias psc='ps xawfo pid,user,args'
+  alias psc='ps xawfo pid,state,user,args'
 fi
 
 # alias for using rsync with sudo and ssh
