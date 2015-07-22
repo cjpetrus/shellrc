@@ -9,6 +9,9 @@ alias l='ls -CF'
 # always use vimproved
 alias vi='vim'
 
+# display all the history!
+alias history="cat $HISTFILE"
+
 # use colordiff if available
 if which colordiff &> /dev/null; then
   alias diff='colordiff'

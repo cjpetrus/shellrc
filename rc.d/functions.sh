@@ -5,6 +5,9 @@ chr() { printf $(printf '\\%03o\\n' "$1"); }
 # highlight text
 highlight() { e="$1"; shift; grep --color=always -Eih "$e|$" "$@"; }
 
+# grep all the history!
+histgrep() { grep "$1" "$HISTFILE"; }
+
 # grep process table
 psgrep() { psc |grep -v grep |grep -i --color=auto "$@"; }
 
