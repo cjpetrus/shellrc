@@ -6,6 +6,10 @@ alias ll='ls -hal'
 alias la='ls -A'
 alias l='ls -CF'
 
+# display non-printable characters when using cat.
+# this protects us from evil escape sequences trying to hide code
+alias cat='cat -v'
+
 # always use vimproved
 alias vi='vim'
 
