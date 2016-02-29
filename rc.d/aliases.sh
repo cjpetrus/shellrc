@@ -6,8 +6,14 @@ alias ll='ls -hal'
 alias la='ls -A'
 alias l='ls -CF'
 
-# always use vimproved
-alias vi='vim'
+# Use neovim if available
+if which nvim &> /dev/null; then
+  alias vim='nvim'
+  alias vi='nvim'
+# Fallback to vim
+elif which vim &> /dev/null; then
+  alias vi='vim'
+fi
 
 # display all the history!
 alias history="cat $HISTFILE"
