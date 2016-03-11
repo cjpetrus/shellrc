@@ -337,9 +337,9 @@ __git_ps1 ()
     if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ] &&
        [ "$(git config --bool bash.showDirtyState)" != "false" ]
     then
-      git diff --no-ext-diff --quiet --exit-code || w="${c_red}✗${c_clear}"
+      git diff --no-ext-diff --quiet --exit-code || w="${c_red}±${c_clear}"
       if [ -n "$short_sha" ]; then
-        git diff-index --cached --quiet HEAD -- || i="${c_yellow}✗${c_clear}"
+        git diff-index --cached --quiet HEAD -- || i="${c_yellow}±${c_clear}"
       else
         i="${c_yellow}⊔${c_clear}"
       fi
@@ -364,7 +364,7 @@ __git_ps1 ()
   local z="${GIT_PS1_STATESEPARATOR-"|"}"
 
   local f="$w$i$s$u"
-  [ -z "$f" ] && f="${c_green}✔${c_clear}"
+  [ -z "$f" ] && f="${c_green}✓${c_clear}"
 
   local gitstring="$c${c_green}${b##refs/heads/}${c_clear}${f:+$z$f}$r$p"
 
