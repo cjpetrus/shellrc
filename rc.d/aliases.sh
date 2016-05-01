@@ -34,7 +34,7 @@ elif [[ "$(uname)" == "Linux" ]]; then
 fi
 
 # alias for using rsync with sudo and ssh
-alias rrsync='rsync --rsync-path sudo\ rsync -rvze ssh'
+alias rrsync='rsync --rsync-path sudo\ rsync --recursive --links --perms --verbose --compress --rsh=ssh'
 
 # sum (e.g. echo 1 2 3 |sum)
 alias sum="xargs | tr ' ' '+' | bc"
