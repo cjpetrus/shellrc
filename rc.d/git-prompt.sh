@@ -82,7 +82,7 @@ GIT_PS1_SHOWUPSTREAM="auto"
 #     describe      relative to older annotated tag (v1.6.3.1-13-gdd42c2f)
 #     default       exactly matching tag
 #
-# Make sure colors.sh is also sourced in your bashrc/zshrc
+# NOTE: Make sure colors.sh is also sourced in your bashrc/zshrc
 
 # check whether printf supports -v
 __git_printf_supports_v=
