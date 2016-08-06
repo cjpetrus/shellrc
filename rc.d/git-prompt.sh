@@ -220,6 +220,13 @@ __git_ps1 ()
     ;;
   esac
 
+  # Bail out if .no-git-shell-prompt file is found in the repository root directory,
+  # or if `git config gui.no-git-shell-prompt true` is set.
+  if [ -f "$(git rev-parse --show-toplevel 2> /dev/null)/.no-git-shell-prompt" ] ||
+     [ "$(git config gui.no-git-shell-prompt 2> /dev/null)" == "true" ]; then
+    return
+  fi
+
   local repo_info rev_parse_exit_code
   repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
     --is-bare-repository --is-inside-work-tree \
