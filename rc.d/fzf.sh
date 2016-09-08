@@ -40,6 +40,18 @@ fkill() {
 
 # fco - checkout git branch/tag
 fco() {
+  # Bail out if we are not in a git repository
+  local repo_info
+  repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
+    --is-bare-repository --is-inside-work-tree \
+    --short HEAD 2>/dev/null)"
+  rev_parse_exit_code="$?"
+
+  if [ -z "$repo_info" ]; then
+    echo "Not a git repository"
+    return rev_parse_exit_code
+ fi
+
   local tags branches target
   tags=$(
     git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
@@ -55,6 +67,18 @@ fco() {
 
 # fshow - git commit browser
 fshow() {
+  # Bail out if we are not in a git repository
+  local repo_info
+  repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
+    --is-bare-repository --is-inside-work-tree \
+    --short HEAD 2>/dev/null)"
+  rev_parse_exit_code="$?"
+
+  if [ -z "$repo_info" ]; then
+    echo "Not a git repository"
+    return rev_parse_exit_code
+ fi
+
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
