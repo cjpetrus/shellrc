@@ -10,6 +10,11 @@
 # - $FZF_COMPLETION_TRIGGER (default: '**')
 # - $FZF_COMPLETION_OPTS    (default: empty)
 
+# Bail out if fzf is not installed
+if ! which fzf &> /dev/null; then
+  return
+fi
+
 # To use custom commands instead of find, override _fzf_compgen_{path,dir}
 if ! declare -f _fzf_compgen_path > /dev/null; then
   _fzf_compgen_path() {

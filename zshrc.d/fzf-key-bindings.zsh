@@ -1,3 +1,8 @@
+# Bail out if fzf is not installed
+if ! which fzf &> /dev/null; then
+  return
+fi
+
 # Key bindings
 # ------------
 if [[ $- == *i* ]]; then
