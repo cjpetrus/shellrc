@@ -39,20 +39,20 @@ alias rrsync='rsync --rsync-path sudo\ rsync --recursive --perms --copy-links --
 # sum (e.g. echo 1 2 3 |sum)
 alias sum="xargs | tr ' ' '+' | bc"
 
-# alias ag to ack/grep if ag is not available
-if ! which ag &> /dev/null; then
-  # Use ack if available
-  if which ack &> /dev/null; then
-    alias ag='ack'
-
-  # Debian/Ubuntu executeable name is ack-grep
-  elif which ack-grep &> /dev/null; then
-    alias ag='ack-grep'
-
-  # Fallback to grep -Ri
+# alias rg to ag/grep if ripgrep is not available
+if ! which rg &> /dev/null; then
+  # Use ag if available
+  if which ag &> /dev/null; then
+    alias rg='ag'
   else
-    ag() { grep -Ri $1 *; }
+    # Fallback to grep -R
+    rg() { grep -R $1 *; }
   fi
+fi
+
+# Fallback to grep -Ri if ag is not installed
+if ! which ag &> /dev/null; then
+  ag() { grep -Ri $1 *; }
 fi
 
 # use vimpager as pager if available
