@@ -8,11 +8,11 @@ alias l='ls -CF'
 
 # Use neovim if available
 if which nvim &> /dev/null; then
-  alias vim='nvim'
-  alias vi='nvim'
+  alias vim='nvim -p'
+  alias vi='nvim -p'
 # Fallback to vim
 elif which vim &> /dev/null; then
-  alias vi='vim'
+  alias vi='vim -p'
 fi
 
 # display all the history!
