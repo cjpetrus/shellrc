@@ -14,7 +14,7 @@
 
 ```bash
 cd
-git clone git://github.com/chr4/shellrc.git .shellrc
+git clone git://github.com/cjpetrus/shellrc.git .shellrc
 
 # bash config
 ln -sf .shellrc/bashrc .bashrc
